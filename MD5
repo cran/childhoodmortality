@@ -1,0 +1,9 @@
+0dee96fe1321cb087e2b0060f1550a75 *DESCRIPTION
+aa1107088633d06fcb5a65d8cb7e49d1 *NAMESPACE
+f2984fcb696f4d670fa3ec018abefc44 *R/childhoodmortality.R
+49cd2cd75b23ef0194e28f483a8f8609 *R/data.R
+e2250e7f1b7a9d737f5578f07775307e *R/utilities.R
+8348070bd5716eea537a936b5d477cde *README.md
+ce36c9c08c769c6615c10e860d0eaf1e *data/model_ipums_dhs_dataset.rda
+41d092c9b4f7f87265324b1aa9b6da8d *man/childhoodmortality.Rd
+eee8cd9ef5547cbc9e16610572cc2d20 *man/model_ipums_dhs_dataset.Rd
