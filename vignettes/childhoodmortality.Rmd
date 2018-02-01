@@ -1,19 +1,46 @@
+---
+title: "Package Vignette (Childhoodmortality)"
+author: "Casey Breen"
+date: "`r Sys.Date()`"
+output:
+rmarkdown::html_vignette:
+  toc: true
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  %\usepackage[utf8]{inputenc}
 
-# childhoodmortality
-Tools to calculate childhood mortality rates (neonatal, postneonatal, infant, child, under-five) using DHS data. 
+---
 
-Install this package using the following command: ```install.packages("childhoodmortality")```
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
-Alternatively: 
-```install.packages("devtools")```
 
-```devtools::install_github("caseybreen/childhoodmortality")```
 ### Overview
 
-The *childhoodmortality* package offers a straightforward approach to computing childhood mortality rates. The package was developed in accordance with the “Methodology of DHS Mortality Rates Estimation” section of the DHS Guide to Statistics (Rutstein 2006:90-95). Specifically, the package uses a synthetic cohort life table approach, combining mortality probabilities for age segments with actual cohort mortality experience. The `childhoodmortality` package defaults to the DHS Program’s practice of calculating mortality rates for five-year periods preceding the start date of the survey. By adhering to [DHS Guidelines](https://dhsprogram.com/pubs/pdf/DHSG1/Guide_to_DHS_Statistics_29Oct2012_DHSG1.pdf), estimates produced from the package can be compared to those published in the DHS Final Reports.
+The *childhoodmortality* package offers a straightforward approach to computing childhood mortality rates. The package was developed in accordance with the “Methodology of DHS Mortality Rates Estimation” section of the DHS Guide to Statistics (Rutstein 2006:90-95). Specifically, the package uses a synthetic cohort life table approach, combining mortality probabilities for age segments with actual cohort mortality experience. The *childhoodmortality* package defaults to the DHS Program’s practice of calculating mortality rates for five-year periods preceding the start date of the survey. By adhering to [DHS Guidelines](https://dhsprogram.com/pubs/pdf/DHSG1/Guide_to_DHS_Statistics_29Oct2012_DHSG1.pdf), estimates produced from the package can be compared to those published in the DHS Final Reports.
 
-DHS surveys are conducted using a multi-stage stratified design, so standard sampling error formulae for simple random samples cannot be applied. For mortality rates, the DHS Program uses a jackknife repeated replication approach outlined in Appendix C of the DHS Final Reports [DHS Final Reports](https://dhsprogram.com/pubs/pdf/FR293/FR293.pdf) (Rutstein 2006). This resampling technique systematically omits a single cluster from the dataset, replicates the mortality rate estimate, repeats this replication for every cluster, and then uses the mortality rates computed in the replications to calculate standard errors. This approach controls for sample design. The *childhoodmortality* package computes standard errors for the mortality rate type specified.
+DHS surveys are conducted using a multi-stage stratified design, so standard sampling error formulae for simple random samples cannot be applied. For mortality rates, the DHS Program uses a jackknife repeated replication approach outlined in Appendix C of the [DHS Final Reports](https://dhsprogram.com/pubs/pdf/FR293/FR293.pdf) (Rutstein 2006). This resampling technique systematically omits a single cluster from the dataset, replicates the mortality rate estimate, repeats this replication for every cluster, and then uses the mortality rates computed in the replications to calculate standard errors. This approach controls for sample design. The *childhoodmortality* package computes standard errors for the mortality rate type specified. The formula for the jackknife repeated replication method is as follows: 
 
+
+$$SE^2(r) = var(r) = \frac{1}{k(k-1)} \sum\limits_{j=1}^k (r_i-r)^2 $$
+
+in which:
+
+$$r_i =kr-(k-1)r_{(i)}$$
+and:
+
+   $r$     is the mortality rate estimate
+
+   $r_{(i)}$   is the estimate computed from the samples omitting the $i^{th}$ 
+
+   $k$       is the total number of clusters
+   
 
 ### Using the childhoodmortality package
 
@@ -118,6 +145,7 @@ The `childhoodmortality` function returns a data frame containing::
 - Standard errors for each subpopulation estimate
 
 - Lower and upper bounds of the 95% confidence interval (rate +/- 2 SEs)
+
 
 
 
