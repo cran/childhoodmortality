@@ -1,7 +1,7 @@
 Package: childhoodmortality
 Type: Package
 Title: Calculating Childhood Mortality Rates
-Version: 0.2.0
+Version: 0.3.0
 Author: Casey Breen
 Depends: R(>= 2.10.0)
 Maintainer: Casey Breen <cbreen@umn.edu>
@@ -14,11 +14,11 @@ Description: Calculates childhood (neonatal, postneonatal, infant, child, and un
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: plyr, matrixStats
+Imports: plyr, matrixStats, dplyr
 RoxygenNote: 6.0.1
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-02-01 18:17:55 UTC; cbreen
+Packaged: 2018-05-10 16:17:13 UTC; cbreen
 Repository: CRAN
-Date/Publication: 2018-02-01 18:24:42 UTC
+Date/Publication: 2018-05-10 16:29:58 UTC
